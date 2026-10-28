@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Kalkulator Biru</title>
+
+    <!-- Menghubungkan CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="calculator">
+
+        <h1 class="title">🔵 Kalkulator</h1>
+
+        <!-- Pilihan mode kalkulator -->
+        <div class="mode-switch">
+
+            <button
+                id="basicMode"
+                class="mode-btn active"
+                onclick="switchMode('basic')">
+                Kalkulator Biasa
+            </button>
+
+            <button
+                id="geometryMode"
+                class="mode-btn"
+                onclick="switchMode('geometry')">
+                Bangun Ruang
+            </button>
+
+        </div>
+
+        <!-- ================================== -->
+        <!-- KALKULATOR BIASA -->
+        <!-- ================================== -->
+
+        <div id="basicCalculator">
+
+            <input
+                type="text"
+                class="display"
+                id="display"
+                value="0"
+                readonly
+                aria-label="Layar kalkulator">
+
+            <div class="buttons">
+
+                <button class="function"
+                    onclick="clearDisplay()">AC</button>
+
+                <button class="function"
+                    onclick="deleteNumber()">⌫</button>
+
+                <button class="function"
+                    onclick="percentage()">%</button>
+
+                <button class="operator"
+                    onclick="chooseOperator('/')">÷</button>
+
+                <button onclick="addNumber('7')">7</button>
+                <button onclick="addNumber('8')">8</button>
+                <button onclick="addNumber('9')">9</button>
+
+                <button class="operator"
+                    onclick="chooseOperator('*')">×</button>
+
+                <button onclick="addNumber('4')">4</button>
+                <button onclick="addNumber('5')">5</button>
+                <button onclick="addNumber('6')">6</button>
+
+                <button class="operator"
+                    onclick="chooseOperator('-')">−</button>
+
+                <button onclick="addNumber('1')">1</button>
+                <button onclick="addNumber('2')">2</button>
+                <button onclick="addNumber('3')">3</button>
+
+                <button class="operator"
+                    onclick="chooseOperator('+')">+</button>
+
+                <button class="zero"
+                    onclick="addNumber('0')">0</button>
+
+                <button onclick="addDecimal()">.</button>
+
+                <button class="equal"
+                    onclick="calculate()">=</button>
+
+            </div>
+
+        </div>
+
+        <!-- ================================== -->
+        <!-- KALKULATOR BANGUN RUANG -->
+        <!-- ================================== -->
+
+        <div id="geometryCalculator" hidden>
+
+            <h2 class="geometry-title">
+                Kalkulator Bangun Ruang
+            </h2>
+
+            <!-- Pilihan bangun ruang -->
+            <label for="shape">
+                Pilih Bangun Ruang:
+            </label>
+
+            <select
+                id="shape"
+                onchange="updateGeometryFields()">
+
+                <option value="cube">Kubus</option>
+                <option value="cuboid">Balok</option>
+                <option value="cylinder">Tabung</option>
+                <option value="sphere">Bola</option>
+                <option value="cone">Kerucut</option>
+                <option value="prism">Prisma Segitiga</option>
+                <option value="pyramid">Limas Segiempat</option>
+
+            </select>
+
+            <!-- Pilihan jenis perhitungan -->
+            <label for="geometryOperation">
+                Pilih Perhitungan:
+            </label>
+
+            <select
+                id="geometryOperation"
+                onchange="updateGeometryFields()">
+
+                <option value="volume">Volume</option>
+                <option value="surface">Luas Permukaan</option>
+
+            </select>
+
+            <!-- Input ukuran dibuat otomatis oleh JavaScript -->
+            <div id="geometryInputs"></div>
+
+            <!-- Tombol hitung -->
+            <button
+                class="calculate-geometry"
+                onclick="calculateGeometry()">
+
+                Hitung
+
+            </button>
+
+            <!-- Hasil perhitungan -->
+            <div
+                id="geometryResult"
+                aria-live="polite">
+
+                Hasil akan muncul di sini.
+
+            </div>
+
+            <p class="geometry-note">
+                Masukkan semua ukuran dengan satuan yang sama.
+                Hasil volume menggunakan satuan kubik,
+                sedangkan luas permukaan menggunakan satuan persegi.
+            </p>
+
+        </div>
+
+        <!-- ================================== -->
+        <!-- FOOTER -->
+        <!-- ================================== -->
+
+        <p class="footer">
+            Simple Blue Calculator © 2026
+        </p>
+
+    </div>
+
+    <!-- Menghubungkan JavaScript -->
+    <script src="script.js"></script>
+
+</body>
+
+</html>
